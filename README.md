@@ -40,4 +40,7 @@ grep -rl app/datastore/ -ie "[a-zA-Z]\+ in (" | xargs sed -i -e "s/\([a-zA-Z]\+\
 
 grep -rl app/ -e "if *(\$[a-zA-Z]\+\[.*\])"  | xargs sed -i -e "s@if *(\(\$[a-zA-Z]\+\)\[\(.*\)\])@if (array_key_exists(\2, \1))@g"s
 
+# Kill processes with grep
+ps -fe | grep python.*process_runner | grep -v grep | awk '{print $2}' | xargs kill -9
+
 ```
