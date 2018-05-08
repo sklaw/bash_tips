@@ -43,4 +43,7 @@ grep -rl app/ -e "if *(\$[a-zA-Z]\+\[.*\])"  | xargs sed -i -e "s@if *(\(\$[a-zA
 # Kill processes with grep
 ps -fe | grep python.*process_runner | grep -v grep | awk '{print $2}' | xargs kill -9
 
+# Grep searched files and sort them by one of the space-seperated columns
+find . -name introspection_model_info -printf '%p' -exec grep threshold {} \; | sort -n -k 6 -r
+
 ```
