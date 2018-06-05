@@ -45,6 +45,7 @@ ps -fe | grep python.*process_runner | grep -v grep | awk '{print $2}' | xargs k
 
 # Grep searched files and sort them by one of the space-seperated columns
 find . -name introspection_model_info -printf '%p' -exec grep threshold {} \; | sort -n -k 6 -r
+find . -path "*skill 5/introspection_model_info" -printf '%p' -exec grep threshold {} \; | sort -n -k 6 -r
 
 # Find msg files and append a line to them
 find . -name "*.msg" -exec sh -c "echo 'Header header' >> {}" \;
