@@ -50,6 +50,9 @@ find . -path "*skill 5/introspection_model_info" -printf '%p' -exec grep thresho
 # Find msg files and append a line to them
 find . -name "*.msg" -exec sh -c "echo 'Header header' >> {}" \;
 
+# udev rule that connects robotiq force sensor and more
+KERNEL=="ttyUSB?", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DAWYTWZ1", MODE="0666", GROUP="dialout", SYMLINK+="robotiqforcesensor"
+
 
 ```
 
