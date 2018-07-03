@@ -53,7 +53,10 @@ find . -name "*.msg" -exec sh -c "echo 'Header header' >> {}" \;
 # udev rule that connects robotiq force sensor and more
 KERNEL=="ttyUSB?", SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6015", ATTRS{serial}=="DAWYTWZ1", MODE="0666", GROUP="dialout", SYMLINK+="robotiqforcesensor"
 
-
+# dry run find and cp target's folder
+find . -name record.bag -exec sh -c 'echo "-R -v "$(dirname "$0")" ../bags/"' {} \;
+# run find and cp target's folder
+find . -name record.bag -exec sh -c 'cp -R -v "$(dirname "$0")" ../bags/' {} \;
 ```
 
 
